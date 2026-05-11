@@ -1,0 +1,42 @@
+[
+  {
+    "order_id": 1001,
+    "customer": {"id": "C001", "name": "Alice Hartman", "tier": "gold"},
+    "shipping": {"city": "Chicago", "state": "IL", "zip": "60601"},
+    "amount": 1200.00,
+    "status": "shipped",
+    "items": [{"sku": "W-A", "qty": 2}, {"sku": "W-B", "qty": 1}]
+  },
+  {
+    "order_id": 1002,
+    "customer": {"id": "C002", "name": "Bob Nguyen", "tier": "silver"},
+    "shipping": {"city": "Dallas", "state": "TX", "zip": "75201"},
+    "amount": 340.00,
+    "status": "pending",
+    "items": [{"sku": "W-C", "qty": 3}]
+  },
+  {
+    "order_id": 1003,
+    "customer": {"id": "C003", "name": "Carol Diaz", "tier": "gold"},
+    "shipping": {"city": "Seattle", "state": "WA", "zip": "98101"},
+    "amount": 870.00,
+    "status": "shipped",
+    "items": [{"sku": "W-A", "qty": 1}]
+  },
+  {
+    "order_id": 1004,
+    "customer": {"id": "C001", "name": "Alice Hartman", "tier": "gold"},
+    "shipping": {"city": "Chicago", "state": "IL", "zip": "60601"},
+    "amount": 95.00,
+    "status": "cancelled",
+    "items": [{"sku": "W-D", "qty": 1}]
+  },
+  {
+    "order_id": 1005,
+    "customer": {"id": "C004", "name": "David Park", "tier": "bronze"},
+    "shipping": {"city": "Atlanta", "state": "GA", "zip": "30301"},
+    "amount": 620.00,
+    "status": "shipped",
+    "items": [{"sku": "W-B", "qty": 2}, {"sku": "W-C", "qty": 1}]
+  }
+]
