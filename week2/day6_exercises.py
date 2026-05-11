@@ -9,6 +9,8 @@ BASE_DIR = Path(__file__).parent
 # CSV type audit
 
 # read input file
+#AI suggestion was to do this to be consistent with BASE_DIR:
+#with open(BASE_DIR / "orders.csv", newline="", encoding="utf-8") as f:
 with open("week2/orders.csv", newline="", encoding="utf-8") as f: 
     rows = list(csv.DictReader(f)) 
     
@@ -30,7 +32,8 @@ for col_name, raw_value in rows[0].items():
         except ValueError:
             cast_type = "str"
     print(f"{col_name:20} {"str":10} {cast_type:10}")
-
+    #AI said not to hard-code "str"
+    
 # Multi-file CSV merge
 # Write a script that: 
 # (1) creates three separate CSV files — orders_jan.csv, orders_feb.csv, 
@@ -57,8 +60,27 @@ for order_month in order_months:
         writer.writeheader()
         writer.writerows(sample_data)
 
+#Read in files in a loop
+monthly_orders = {}
+for order_month in order_months:
+    fname = f"week2/orders_{order_month}.csv"
+    with open(fname, newline="", encoding="utf-8") as f: 
+        monthly_orders[order_month] = list(csv.DictReader(f)) 
 
+for month, rows in monthly_orders.items():
+    print(f"orders_{month}.csv: {len(rows)} rows")
 
+#Combine and output
+all_orders = [item for sublist in monthly_orders.values() for item in sublist]
+
+output_file = BASE_DIR/"orders_q1.csv"
+
+with open(output_file, "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=["order_id", "order_month", "customer","product","amount","status"])
+    writer.writeheader()
+    writer.writerows(all_orders)
+
+print(f"orders_q1.csv: {len(all_orders)} rows")
 
 #CSV diff checker
 # Write a function diff_csvs(file_a, file_b, key_col) that reads two CSVs, 
@@ -68,3 +90,47 @@ for order_month in order_months:
 # add a row to one, change an amount in another. This is a simplified 
 # version of a change-data-capture comparison, which you'll build for 
 # real in later weeks.
+
+def diff_csvs(file_a, file_b, key_col):
+    # Read file_a into a dict
+    with open(file_a, newline="", encoding="utf-8") as f: 
+        filea_rows = list(csv.DictReader(f)) 
+    # Read file_b into a dict
+    with open(file_b, newline="", encoding="utf-8") as f: 
+        fileb_rows = list(csv.DictReader(f)) 
+
+    dict_a = {row[key_col]: row for row in filea_rows}
+    dict_b = {row[key_col]: row for row in fileb_rows}
+
+    for key in dict_a:
+        if key not in dict_b:
+            print(f"{key} in File A not found in File B")
+
+    for key in dict_b:
+        if key not in dict_a:
+            print(f"{key} in File B not found in File A")
+
+    for key in dict_a:
+        if key in dict_b and dict_a[key] != dict_b[key]:
+            print(f"Key {key} present in both files with data difference detected.")
+
+diff_csvs("week2/orders_feb.csv","week2/orders_apr.csv","order_id")
+
+
+# Output
+#Column Name          Raw Type   Cast Type 
+#-------------------- ---------- ----------
+#order_id             str        int
+#customer             str        str
+#product              str        str
+#amount               str        float
+#status               str        str
+#orders_jan.csv: 3 rows
+#orders_feb.csv: 3 rows
+#orders_mar.csv: 3 rows
+#orders_q1.csv: 9 rows
+#1004 in File B not found in File A
+#1005 in File B not found in File A
+#Key 1001 present in both files with data difference detected.
+#Key 1002 present in both files with data difference detected.
+#Key 1003 present in both files with data difference detected.
