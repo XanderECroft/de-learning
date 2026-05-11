@@ -1,0 +1,4 @@
+order_id,customer,product,amount,amount_with_tax
+1001,Alice,Widget A,1200.0,1305.0
+1004,Carol,Widget A,870.0,946.12
+1005,Bob,Widget B,620.0,674.25

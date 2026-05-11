@@ -1,0 +1,6 @@
+order_id,customer,product,amount,status
+1001,Alice,Widget A,1200.00,shipped
+1002,Bob,Widget B,340.00,pending
+1003,Alice,Widget C,95.00,cancelled
+1004,Carol,Widget A,870.00,shipped
+1005,Bob,Widget B,620.00,shipped
