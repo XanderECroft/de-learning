@@ -141,3 +141,15 @@ with open(BASE_DIR / "24h_weather.json", "w", encoding="utf-8") as f:
 #    -> .decode("utf-8")     bytes to string
 #    -> json.loads()         string to Python dict
 #    -> json.dump()          Python dict to clean JSON file    
+
+temperatures = weather_data["hourly"]["temperature_2m"]
+times        = weather_data["hourly"]["time"]
+hourly_rows = [
+    {"time": t, "temperature": temp}
+    for t, temp in zip(times, temperatures)
+]
+hottest = max(hourly_rows, key=lambda x: x["temperature"])
+coldest = min(hourly_rows, key=lambda x: x["temperature"])
+
+print(f"Max: {hottest['temperature']}°C at {hottest['time']}")
+print(f"Min: {coldest['temperature']}°C at {coldest['time']}")
