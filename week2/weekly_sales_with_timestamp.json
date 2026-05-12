@@ -1,0 +1,66 @@
+[
+  {
+    "date": "2024-01-03",
+    "product": "Widget A",
+    "region": "North",
+    "amount": 1200.0,
+    "status": "shipped",
+    "loaded_at": "2026-05-11 23:45:01.590601"
+  },
+  {
+    "date": "2024-01-05",
+    "product": "Widget B",
+    "region": "South",
+    "amount": 340.0,
+    "status": "shipped",
+    "loaded_at": "2026-05-11 23:45:01.590627"
+  },
+  {
+    "date": "2024-01-07",
+    "product": "Widget A",
+    "region": "North",
+    "amount": 870.0,
+    "status": "pending",
+    "loaded_at": "2026-05-11 23:45:01.590628"
+  },
+  {
+    "date": "2024-01-08",
+    "product": "Widget C",
+    "region": "East",
+    "amount": 95.0,
+    "status": "cancelled",
+    "loaded_at": "2026-05-11 23:45:01.590629"
+  },
+  {
+    "date": "2024-01-10",
+    "product": "Widget A",
+    "region": "South",
+    "amount": 1540.0,
+    "status": "shipped",
+    "loaded_at": "2026-05-11 23:45:01.590630"
+  },
+  {
+    "date": "2024-01-12",
+    "product": "Widget B",
+    "region": "North",
+    "amount": 620.0,
+    "status": "shipped",
+    "loaded_at": "2026-05-11 23:45:01.590630"
+  },
+  {
+    "date": "2024-01-15",
+    "product": "Widget C",
+    "region": "East",
+    "amount": 210.0,
+    "status": "pending",
+    "loaded_at": "2026-05-11 23:45:01.590631"
+  },
+  {
+    "date": "2024-01-18",
+    "product": "Widget A",
+    "region": "East",
+    "amount": 980.0,
+    "status": "shipped",
+    "loaded_at": "2026-05-11 23:45:01.590631"
+  }
+]
